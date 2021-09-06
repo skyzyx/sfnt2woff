@@ -1,3 +1,27 @@
+# WOFF → OTF Font Converter
+
+This section was added to the original README and is meant to be purely informational. It explicitly does NOT discuss any legal or moral aspects to the use of this software. Those discussions are best left to the experts.
+
+## For macOS
+
+Assuming Xcode is installed (because duh), it should be as simple as running `make`, then copying the files into your path.
+
+```bash
+make && \
+cp -v sfnt2woff /usr/local/bin/ && \
+cp -v woff2sfnt /usr/local/bin/ && \
+```
+
+You can then mass-convert a directory of `*.woff` files. This script will create `.otf` versions that sit alongside the `.woff` versions in the same directory.
+
+```bash
+find . -type f -name "*.woff" | xargs -I@ bash -c 'FONT="@"; woff2sfnt "${FONT}" > "${FONT%.woff}.otf"' \;
+```
+
+**Original README below.**
+
+----
+
 # WOFF File Format  
 (draft of 2009-10-03)
 
